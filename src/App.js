@@ -1,56 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import "./App.css";
+import MyNav from "./components/MyNav";
+import Myhome from "./pages/Myhome.jsx";
+import MyFooter from "./components/MyFooter";
+import MyContact from "./pages/MyContact";
+import MyPricing from "./pages/MyPricing";
+import MyCart from "./pages/MyCart";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <ToastContainer></ToastContainer>
+      <MyNav></MyNav>
+
+      <Routes>
+        <Route index element={<Myhome />} />
+        <Route path="Home" element={<Myhome />} />
+        <Route path="Contact" element={<MyContact />} />
+        <Route path="Pricing" element={<MyPricing />} />
+        <Route path="cart" element={<MyCart />} />
+      </Routes>
+      <MyFooter></MyFooter>
     </div>
   );
 }
